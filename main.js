@@ -215,12 +215,6 @@ console.log("Exercice 5.2");
 console.log(makeDouble([1, 2, 3]));
 
 // Exercice 5.3 : Convertir en fonction fléchée avec un return implicite
-function convertToPerson(firstnameLastnameTuple) {
-  return {
-    firstname: firstnameLastnameTuple[0],
-    lastname: firstnameLastnameTuple[1],
-  };
-}
 const convertToPerson = ([firstname, lastname]) => ({ firstname, lastname });
 
 console.log("Exercice 5.3");
