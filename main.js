@@ -283,19 +283,14 @@ console.log(displayAmount(computeTotal()));
 
 // Exercice 8 : Transforme les opérations asynchrone avec la syntaxe async/await
 
-function loadFruits() {
-  return fetch("http://127.0.0.1:5500/data/fruits.json").then((response) =>
-    response.json()
-  );
-}
-
-function program() {
-  loadFruits()
-    .then((fruits) => console.log(fruits))
-    .catch((error) =>
-      console.log("Problème lors du chargement des fruits", error)
-    );
-}
+const loadFruits = async () => (await fetch("http://127.0.0.1:5500/data/fruits.json")).json();
+const program = async () => {
+  try {
+    console.log(await loadFruits());
+  } catch (error) {
+    console.log("Problème lors du chargement des fruits", error);
+  }
+};
 
 console.log("Exercice 8");
 program();
