@@ -80,7 +80,10 @@ console.log(title, editor, tome);
 // et la voix Japonaise dans l'anime du second personnage secondaire
 const {
   mainCharacter: { name: mainCharacterName },
-  characters: [{ name: secondCharacterName }, { animeJapaneseVoice: thirdCharacterJapaneseVoice }],
+  characters: [
+    { name: secondCharacterName },
+    { animeJapaneseVoice: thirdCharacterJapaneseVoice },
+  ],
 } = roman;
 
 console.log("Exercice 2.4");
@@ -125,7 +128,7 @@ hello(person);
 
 // Exercice 3.1 : Décompose le tableau colors pour ne garder dans le reste que les couleurs bleue et jaune
 
-const [,,...restOfColors] = colors;
+const [, , ...restOfColors] = colors;
 
 console.log("Exercice 3.1");
 console.log(restOfColors);
@@ -164,7 +167,7 @@ console.log(min(12, 13, 52, 68, 2, 23, 5)); // Le résultat doit être 2
 
 // Exercice 4.1 : Utilise l'opérateur de dispersion pour ajouter "Pink" et "Magenta" dans un nouveau tableau
 
-const moreColors = [...colors , "Pink", "Magenta"];
+const moreColors = [...colors, "Pink", "Magenta"];
 
 console.log("Exercice 4.1");
 console.log(moreColors);
@@ -172,7 +175,7 @@ console.log(moreColors);
 // Exercice 4.2 : Utilise l'opérateur de dispersion pour créer un nouveau tableau
 // où Red est ajouté au début, et "Violet" à la fin
 const partialRainbow = ["Orange", "Yellow", "Green", "Blue", "Indigo"];
-const rainbow =["Red", ...partialRainbow,"Violet"]
+const rainbow = ["Red", ...partialRainbow, "Violet"];
 
 console.log("Exercice 4.2");
 console.log(rainbow);
@@ -184,13 +187,13 @@ const adress = {
   country: "France",
 };
 
-const completeAdress = {...adress, postalCode: 75001};
+const completeAdress = { ...adress, postalCode: 75001 };
 
 console.log("Exercice 4.3");
 console.log(completeAdress);
 
 // Exercice 4.4 : Utilise l'opérateur de dispersion pour copier l'objet person et modifier la valeur de l'age à 20
-const person2 = {...person ,age:20};
+const person2 = { ...person, age: 20 };
 console.log("Exercice 4.4");
 console.log(person2);
 
@@ -200,7 +203,7 @@ console.log(person2);
  */
 
 // Exercice 5.1 : Convertir en fonction fléchée
-const thatsAllFolks = ()=> {
+const thatsAllFolks = () => {
   console.log("That's all folks!");
 };
 
@@ -209,7 +212,7 @@ thatsAllFolks();
 
 // Exercice 5.2 : Convertir toutes les fonctions en fonction fléchée
 // Et si c'est possible, faire un return implicite
-const makeDouble = numbers=>numbers.map(number=> number*2);
+const makeDouble = (numbers) => numbers.map((number) => number * 2);
 
 console.log("Exercice 5.2");
 console.log(makeDouble([1, 2, 3]));
@@ -249,47 +252,12 @@ console.log(convertToPerson2(["John", "Doe"]));
 //
 // Migre ce code dans un module, importe le nécéssaire pour l'utiliser
 
-const cart = [];
-
-function addToCart(productInfo, quantity = 1) {
-  const cartLine = findItemInCart(productInfo.product);
-
-  if (cartLine) {
-    cartLine.quantity += quantity;
-    return;
-  }
-
-  cart.push({ ...productInfo, quantity });
-}
-
-function findItemInCart(productName) {
-  return cart.find((cartLine) => cartLine.product === productName);
-}
-
-function updateCartQuantity(productName, quantity) {
-  const cartLine = findItemInCart(productName);
-
-  if (!cartLine) {
-    addToCart(productName, quantity);
-    return;
-  }
-
-  cartLine.quantity = quantity;
-}
-
-function computeTotal() {
-  return cart.reduce(
-    (total, cartLine) => total + cartLine.quantity * cartLine.price,
-    0
-  );
-}
-
-function displayAmount(amount) {
-  return Intl.NumberFormat("fr-FR", {
-    style: "currency",
-    currency: "EUR",
-  }).format(amount);
-}
+import{
+  addToCart,
+  updateCartQuantity,
+  computeTotal,
+  displayAmount,
+} from "./cart.js";
 
 console.log("Exercice 7");
 
