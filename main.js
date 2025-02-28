@@ -135,7 +135,7 @@ console.log(restOfColors);
 
 const { title2, editor2, tome2, author2, ...reste } = roman;
 
-const roman2 = { title2, editor2, tome2, auteur2 };
+const roman2 = { title2, editor2, tome2, author2 };
 
 console.log("Exercice 3.2");
 console.log(roman2);
@@ -163,7 +163,8 @@ console.log(min(12, 13, 52, 68, 2, 23, 5)); // Le résultat doit être 2
  */
 
 // Exercice 4.1 : Utilise l'opérateur de dispersion pour ajouter "Pink" et "Magenta" dans un nouveau tableau
-const moreColors = colors.concat("Pink", "Magenta");
+
+const moreColors = [...colors , "Pink", "Magenta"];
 
 console.log("Exercice 4.1");
 console.log(moreColors);
@@ -171,7 +172,7 @@ console.log(moreColors);
 // Exercice 4.2 : Utilise l'opérateur de dispersion pour créer un nouveau tableau
 // où Red est ajouté au début, et "Violet" à la fin
 const partialRainbow = ["Orange", "Yellow", "Green", "Blue", "Indigo"];
-const rainbow = ["Red"].concat(partialRainbow, ["Violet"]);
+const rainbow =["Red", ...partialRainbow,"Violet"]
 
 console.log("Exercice 4.2");
 console.log(rainbow);
@@ -183,14 +184,13 @@ const adress = {
   country: "France",
 };
 
-const completeAdress = Object.assign({}, adress, { postalCode: 75001 });
+const completeAdress = {...adress, postalCode: 75001};
 
 console.log("Exercice 4.3");
 console.log(completeAdress);
 
 // Exercice 4.4 : Utilise l'opérateur de dispersion pour copier l'objet person et modifier la valeur de l'age à 20
-const person2 = Object.assign({}, person, { age: 20 });
-
+const person2 = {...person ,age:20};
 console.log("Exercice 4.4");
 console.log(person2);
 
