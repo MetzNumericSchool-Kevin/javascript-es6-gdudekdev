@@ -235,8 +235,8 @@ console.log(convertToPerson(["John", "Doe"]));
 
 function convertToPerson2([firstname, lastname]) {
   return {
-    firstname: firstname,
-    lastname: lastname,
+    firstname,
+    lastname,
   };
 }
 
