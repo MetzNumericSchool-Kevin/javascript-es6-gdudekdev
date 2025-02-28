@@ -5,15 +5,7 @@
 
 // Exercice 1.1 : Transforme la concaténation en interpolation de chaîne de caractères avec les backticks `
 function afficheAddresse(address) {
-  return (
-    "Votre adresse est : " +
-    address.street +
-    ", " +
-    address.city +
-    ", " +
-    address.country +
-    "."
-  );
+  return `Votre adresse est : ${address.street}, ${address.city}, ${address.country}.`;
 }
 
 console.log("Exercice 1.1");
@@ -28,7 +20,10 @@ console.log(
 // Exercice 1.2 : Utilise les chaînes multilignes avec les backticks ` pour afficher plus simplement le menu
 console.log("Exercice 1.2");
 console.log(
-  "Menu de la semaine :\n    - Pâte à tartine\n    - Hoagie\n    - Salade de pommes"
+  `Menu de la semaine :
+      - Pâte à tartine
+      - Hoagie
+      - Salade de pommes`
 );
 
 /**
