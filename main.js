@@ -34,17 +34,13 @@ console.log(
 const colors = ["Red", "Green", "Blue", "Yellow"];
 
 // Exercice 2.1 : Utilise la décomposition pour créer les constantes de couleurs plutôt que d'accéder aux indices
-const red = colors[0];
-const green = colors[1];
-const blue = colors[2];
-const yellow = colors[3];
+const [red, green, blue, yellow] = colors;
 
 console.log("Exercice 2.1");
 console.log(red, green, blue, yellow);
 
 // Exercice 2.2 : La même chose, mais en ignorant ici "Red" et "Yellow"
-const green2 = colors[1];
-const blue2 = colors[2];
+const [, green2, blue2] = colors;
 
 console.log("Exercice 2.2");
 console.log(green2, blue2);
@@ -74,9 +70,7 @@ const roman = {
 };
 
 // Exercices 2.3 : Décompose l'objet pour récupérer le titre, l'éditeur et le tome dans des constantes
-const title = roman.title;
-const editor = roman.editor;
-const tome = roman.tome;
+const { title, editor, tome } = roman;
 
 console.log("Exercice 2.3");
 console.log(title, editor, tome);
@@ -84,9 +78,10 @@ console.log(title, editor, tome);
 // Exercice 2.4 : Décompose l'objet pour récupérer le nom du personnage principal,
 // le nom du premier personnage secondaire
 // et la voix Japonaise dans l'anime du second personnage secondaire
-const mainCharacterName = roman.mainCharacter.name;
-const secondCharacterName = roman.characters[0].name;
-const thirdCharacterJapaneseVoice = roman.characters[1].animeJapaneseVoice;
+const {
+  mainCharacter: { name: mainCharacterName },
+  characters: [{ name: secondCharacterName }, { animeJapaneseVoice: thirdCharacterJapaneseVoice }],
+} = roman;
 
 console.log("Exercice 2.4");
 console.log(
@@ -102,9 +97,7 @@ let lastname = "Doe";
 
 // Exercice 2.5 : Faites l'inversion du prénom et nom avec la décomposition
 // plutôt qu'avoir une variable temporaire
-let temp = firstname;
-firstname = lastname;
-lastname = temp;
+[firstname, lastname] = [lastname, firstname];
 
 console.log("Exercice 2.5");
 console.log(firstname, lastname);
@@ -118,8 +111,8 @@ const person = {
 };
 
 // Exercice 2.6 : Fais une décomposition du paramètre pour extraire directement le prénom et le nom
-function hello(person) {
-  console.log(`Bonjour ${person.firstname} ${person.lastname} !`);
+function hello({ firstname, lastname }) {
+  console.log(`Bonjour ${firstname} ${lastname} !`);
 }
 
 console.log("Exercice 2.6");
