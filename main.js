@@ -200,7 +200,7 @@ console.log(person2);
  */
 
 // Exercice 5.1 : Convertir en fonction fléchée
-const thatsAllFolks = function () {
+const thatsAllFolks = ()=> {
   console.log("That's all folks!");
 };
 
@@ -209,12 +209,7 @@ thatsAllFolks();
 
 // Exercice 5.2 : Convertir toutes les fonctions en fonction fléchée
 // Et si c'est possible, faire un return implicite
-const makeDouble = function (numbers) {
-  return numbers.map(function (number) {
-    const newNumber = number * 2;
-    return newNumber;
-  });
-};
+const makeDouble = numbers=>numbers.map(number=> number*2);
 
 console.log("Exercice 5.2");
 console.log(makeDouble([1, 2, 3]));
@@ -226,6 +221,7 @@ function convertToPerson(firstnameLastnameTuple) {
     lastname: firstnameLastnameTuple[1],
   };
 }
+const convertToPerson = ([firstname, lastname]) => ({ firstname, lastname });
 
 console.log("Exercice 5.3");
 console.log(convertToPerson(["John", "Doe"]));
