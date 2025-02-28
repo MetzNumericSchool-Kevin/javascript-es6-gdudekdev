@@ -124,22 +124,18 @@ hello(person);
  */
 
 // Exercice 3.1 : Décompose le tableau colors pour ne garder dans le reste que les couleurs bleue et jaune
-const restOfColors = [];
 
-restOfColors.push(colors[2]);
-restOfColors.push(colors[3]);
+const [,,...restOfColors] = colors;
 
 console.log("Exercice 3.1");
 console.log(restOfColors);
 
 // Exercice 3.2 : Décompose l'objet, de telle sorte à ce que le reste contienne seulement les clés
-// titre, editeur, tome, titre, auteur
+// titre, editeur, tome, auteur
 
-const roman2 = {};
-roman2.title = roman.title;
-roman2.editor = roman.editor;
-roman2.tome = roman.tome;
-roman2.auteur = roman.auteur;
+const { title2, editor2, tome2, author2, ...reste } = roman;
+
+const roman2 = { title2, editor2, tome2, auteur2 };
 
 console.log("Exercice 3.2");
 console.log(roman2);
@@ -150,12 +146,12 @@ const randomNumbers = [12, 13, 52, 68, 2, 23, 5];
 // Exercice 3.3 : Math.min prend un nombre indéfini d'arguments
 // Utilise l'opérateur de reste pour pouvoir passer un tableau
 console.log("Exercice 3.3");
-console.log(Math.min(12, 13, 52, 68, 2, 23, 5));
+console.log(Math.min(...randomNumbers));
 
 // Exercice 3.4 : Transforme cette fonction pour qu'elle puisse prendre
 // un nombre indéfini de paramètres car actuellement elle en prend que 3
-function min(a, b, c) {
-  return Math.min(a, b, c);
+function min(...numbers) {
+  return Math.min(...numbers);
 }
 
 console.log("Exercice 3.4");
